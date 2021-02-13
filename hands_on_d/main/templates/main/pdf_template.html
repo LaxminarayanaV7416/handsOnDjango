@@ -19,26 +19,19 @@ body {
 .header {
   padding: 30px;
   text-align: center;
-  background: #1abc9c;
-  color: white;
-}
-
-.pdf_highlighter {
-  text-align: center;
-  background: #ae5edd;
-  color: white;
+  background: rgb(50, 194, 170);;
 }
 
 .formCss {
-  padding: 40px;
+  padding: 20px;
   text-align: center;
-  background: #1a9cbc;
-  color: white;
+  background: rgb(211, 204, 236);;
+  
 }
 
 /* Increase the font size of the heading */
-.header h1 {
-  font-size: 40px;
+.header h2 {
+  font-size: 20px;
 }
 
 
@@ -65,6 +58,10 @@ body {
   background: rgb(218, 151, 206);
 }
 
+.footer h2 {
+  font-size: 13px;
+}
+
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
   .row {   
@@ -83,27 +80,34 @@ body {
 </head>
 <body>
 
+  <div class="header">
+    <h2><b>{{header.name}}</b><br>
+    {{header.email}}<br>
+    {{header.date}}</h2>
+  </div>
+  
+  <div class="formCss">
+    {{content| safe}}
+  </div>
+  <div class="footer">
+      <h2>{{footer.text}}<br>
+      {{footer.page}}</h2>
+  </div>
+  </body>
+  </html>
+<!-- <body>
+
 <div class="header">
-  <h1>{{header.name}}</h1>
-  <h3>{{header.email}}</h3>
-  <p>{{header.date}}</p>
+  <h2> My heading is so great </h2>
+  <p> lets play here som uch to copy lets play here som uch to copy lets play here som uch to copy lets play here som uch to copy lets play here som uch to copy</p>
 </div>
 
 <div class="formCss">
-<form method="POST">
-    {% csrf_token %}
-    {{ myform.media }}
-    {{ myform.as_p }}
-    <input type="submit" name="normal"/>
-    <input type="submit" value="Download Current PDF" name="download">
-</form>
+ jsjbsdffbdsjbfjsdb
 </div>
-<div class="pdf_highlighter">
-<a href="{% url 'pdf_download' %}">Download as previous PDF!</a>
-</div>
+
 <div class="footer">
-    <h3>{{footer.text}}</h3>
-    <h4>{{footer.page}}</h4>
+    <h2>Footer</h2>
 </div>
 </body>
-</html>
+</html> -->
