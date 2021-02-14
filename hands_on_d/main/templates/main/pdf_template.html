@@ -4,84 +4,64 @@
 <title>PDF Download</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <style>
 * {
   box-sizing: border-box;
 }
 
 /* Style the body */
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+
+/* @page {
+  margin: 1cm;
+  margin-bottom: 2.5cm;
+@frame footer {
+  -pdf-frame-content: footerFirst;
+  -pdf-frame-border: 1;
+  bottom: 2cm;
+  margin-left: 1cm;
+  margin-right: 1cm;
+  height: 1cm;
 }
+@frame footer {
+  -pdf-frame-content: footerOther;
+  bottom: 2cm;
+  margin-left: 1cm;
+  margin-right: 1cm;
+  height: 1cm;
+} */
 
-/* Header/logo Title */
-.header {
-  padding: 30px;
-  text-align: center;
-  background: rgb(50, 194, 170);;
-}
-
-.formCss {
-  padding: 20px;
-  text-align: center;
-  background: rgb(26,156,188);;
-  
-}
-
-/* Increase the font size of the heading */
-.header h2 {
-  font-size: 20px;
-}
-
-
-
-/* Main column */
-.main {   
-  -ms-flex: 70%; /* IE10 */
-  flex: 70%;
-  background-color: white;
-  padding: 20px;
-}
-
-/* Fake image, just for this example */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-}
-
-/* Footer */
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: rgb(218, 151, 206);
-}
-
-.footer h2 {
-  font-size: 13px;
-}
-
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 700px) {
-  .row {   
-    flex-direction: column;
-  }
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .navbar a {
-    float: none;
-    width: 100%;
-  }
-}
+@page {
+        size: letter portrait;
+        margin: 1cm;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 40pt; height: 120pt;
+            
+            -pdf-frame-border: 1;
+        }
+        @frame content_frame {
+            left: 50pt;
+            width: 512pt;
+            top: 180pt;
+            height: 480pt;
+              /* for debugging the layout */
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 640pt; height: 120pt;
+           
+            -pdf-frame-border: 1;
+        }
+    }
 </style>
 </head>
 <body>
 
-  <div class="header">
-    <h2><b>{{header.name}}</b><br>
+   <div id="header_content" style="text-align: center; padding-top:5px; background: #1abc9c">
+    <h2><img style="height: 50px;width: 50px;" class="rounded-circle account-img" src="{{ header.image }}">
+    <br>{{header.name}}</b><br>
     {{header.email}}<br>
     {{header.date}}</h2>
   </div>
@@ -89,25 +69,10 @@ body {
   <div class="formCss">
     <p>{{content| safe}}</p>
   </div>
-  <div class="footer">
+
+  <div id="footer_content" style="text-align: center; padding-top:5px">
       <h2>{{footer.text}}<br>
-      {{footer.page}}</h2>
-  </div>
+      {{footer.page}} <br> <img style="height: 40px;width: 60px;" class="rounded-circle account-img" src="{{ footer.image }}"></h2>
+  </div> 
   </body>
   </html>
-<!-- <body>
-
-<div class="header">
-  <h2> My heading is so great </h2>
-  <p> lets play here som uch to copy lets play here som uch to copy lets play here som uch to copy lets play here som uch to copy lets play here som uch to copy</p>
-</div>
-
-<div class="formCss">
- jsjbsdffbdsjbfjsdb
-</div>
-
-<div class="footer">
-    <h2>Footer</h2>
-</div>
-</body>
-</html> -->

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
     'ckeditor',
     'ckeditor_uploader',
 
@@ -142,4 +143,49 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# TINYMCE_DEFAULT_CONFIG = {
+#     "height": "320px",
+#     "width": "960px",
+#     "menubar": "file edit view insert format tools table help",
+#     "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
+#     "fullscreen insertdatetime media table paste code help wordcount spellchecker",
+#     "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
+#     "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
+#     "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
+#     "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
+#     "a11ycheck ltr rtl | showcomments addcomment code",
+#     "custom_undo_redo_levels": 10,
+#     "language": "es_ES",  # To force a specific language instead of the Django current language.
+# }
+# TINYMCE_SPELLCHECKER = True
+# TINYMCE_COMPRESSOR = True
 
+TINYMCE_DEFAULT_CONFIG = {
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    "height": "480px",
+    'selector': 'textarea',
+    'theme': 'silver',
+    'plugins': '''
+            textcolor save link image media preview codesample contextmenu
+            table code lists fullscreen  insertdatetime  nonbreaking
+            contextmenu directionality searchreplace wordcount visualblocks
+            visualchars code fullscreen autolink lists  charmap print  hr
+            anchor pagebreak advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code
+            ''',
+    'toolbar1': '''
+            fullscreen preview bold italic underline strikethrough | fontselect formatselect
+            fontsizeselect  | forecolor backcolor | alignleft alignright |
+            aligncenter alignjustify | indent outdent | bullist numlist table |
+            | link image media codesample formatpainter removeformat| backcolor 
+            casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons |
+            ''',
+    'toolbar2': '''
+            visualblocks visualchars |
+            charmap hr pagebreak nonbreaking anchor |  code | undo redo | numlist bullist checklist |
+            a11ycheck ltr rtl | showcomments addcomment code template link anchor 
+            ''',
+    'contextmenu': 'formats | link image',
+    'menubar': True,
+    'statusbar': True,
+}

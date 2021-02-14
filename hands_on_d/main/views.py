@@ -4,6 +4,7 @@ from .forms import PostAdminForm
 from .pdf_utils import render_to_pdf 
 from .models import get_latest_header, get_latest_footer, get_latest_post, Post
 
+
 # Create your views here.
 def home(request):
     header = get_latest_header()
@@ -25,6 +26,7 @@ def home(request):
 
 def pdf_download(request):
     header = get_latest_header()
+    print(header)
     footer= get_latest_footer()
     content = get_latest_post()
     pdf = render_to_pdf('main/pdf_template.html',{'header':header, 'footer':footer, 'content': content})

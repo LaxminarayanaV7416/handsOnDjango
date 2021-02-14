@@ -4,6 +4,8 @@
 <title>Shivam Mediasoft</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <style>
 * {
   box-sizing: border-box;
@@ -84,6 +86,7 @@ body {
 <body>
 
 <div class="header">
+  <img class="rounded-circle account-img" src="{{ header.image_path.url }}">
   <h1>{{header.name}}</h1>
   <h3>{{header.email}}</h3>
   <p>{{header.date}}</p>
@@ -102,8 +105,9 @@ body {
 <a href="{% url 'pdf_download' %}">Download as previous PDF!</a>
 </div>
 <div class="footer">
-    <h3>{{footer.text}}</h3>
-    <h4>{{footer.page}}</h4>
+    <h4>{{footer.text}}</h4>
+    <h5>{{footer.page}}</h5>
+    <img class="rounded-circle account-img" src="{{ footer.image_path.url }}">
 </div>
 </body>
 </html>
