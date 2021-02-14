@@ -25,13 +25,22 @@ class Footer(models.Model):
         return f'{self.page}_{self.text}'
 
 def get_latest_header():
-    header = list(Header.objects.all())[-1]
-    return {'date':header.date, 'email': header.email, 'name':header.name}
+    try:
+        header = list(Header.objects.all())[-1]
+        return {'date':header.date, 'email': header.email, 'name':header.name}
+    except Exception:
+        return {'date':'', 'email': '', 'name':''}
 
 def get_latest_footer():
-    header = list(Footer.objects.all())[-1]
-    return {'page':header.page, 'text':header.text }
+    try:
+        header = list(Footer.objects.all())[-1]
+        return {'page':header.page, 'text':header.text }
+    except Exception:
+        return {'page':'', 'text':'' }
 
 def get_latest_post():
-    header = list(Post.objects.all())[-1]
-    return header.content
+    try:
+        header = list(Post.objects.all())[-1]
+        return header.content
+    except Exception:
+        return 'No Post was created so displaying DEFAULT TEXT as content'

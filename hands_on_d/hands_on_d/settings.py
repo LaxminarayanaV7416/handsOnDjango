@@ -92,9 +92,9 @@ WSGI_APPLICATION = 'hands_on_d.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'localhost:1521/application',
-        'USER': 'lucky',
-        'PASSWORD': 'abcd1234',C:\Users\laxmi\OneDrive\Desktop\instantclient_19_10
+        'NAME': 'xe',
+        'USER': 'system',
+        'PASSWORD': 'abcd1234',
         'HOST': '127.0.0.1',
         'PORT': '1521',
     }
